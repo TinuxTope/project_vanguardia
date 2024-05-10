@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Diaris!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        li:last-child {
+            margin-right: 0;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            margin-top: 50px;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diaris!</h1>
+        <p>Mira les noticies de La Vanguardia:</p>
+        <ul>
+            <li><a href="/lavanguardia/deportes">Deportes</a></li>
+            <li><a href="/lavanguardia/politica">Política</a></li>
+            <li><a href="/lavanguardia/vida">Vida</a></li>
+            <!-- Nuevas secciones de La Vanguardia -->
+            <li><a href="/lavanguardia/economia">Economía</a></li>
+            <li><a href="/lavanguardia/cultura">Cultura</a></li>
+        </ul>
+        <img src="/static/img/diaris.jpg" alt="Diaris" />
+    </div>
+</body>
+</html>

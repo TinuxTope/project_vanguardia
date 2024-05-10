@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Vanguardia - {{rss.feed.title}}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        h1 {
+            color: #333;
+        }
+        .noticia {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .noticia h2 {
+            color: #007bff;
+        }
+        .noticia p {
+            color: #555;
+        }
+        .noticia img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Mostrar el logo del canal y la URL del canal -->
+    <h1>La Vanguardia - <small>{{rss.feed.title}}</small></h1>
+    <img src="{{rss.feed.image.url}}" alt="Logo de La Vanguardia">
+
+    <!-- Mostrar la información de cada noticia -->
+    {% for item in rss.entries %}
+        <div class="noticia">
+            <h2><a href="{{item.link}}">{{item.title}}</a></h2>
+            <!-- Mostrar la descripción de la noticia -->
+            <p>{{item.description}}</p>
+            <!-- Mostrar la fecha de creación de la noticia -->
+            <p><strong>Fecha de creación:</strong> {{item.published}}</p>
+            <!-- Mostrar la fecha de modificación de la noticia (si está disponible) -->
+            {% if item.updated %}
+                <p><strong>Última actualización:</strong> {{item.updated}}</p>
+            {% endif %}
+            <!-- Mostrar el autor/a de la noticia (si está disponible) -->
+            {% if item.author %}
+                <p><strong>Autor:</strong> {{item.author}}</p>
+            {% endif %}
+            <!-- Mostrar la categoría de la noticia (si está disponible) -->
+            {% if item.category %}
+                <p><strong>Categoría:</strong> {{item.category}}</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+</body>
+</html>

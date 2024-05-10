@@ -38,28 +38,31 @@
 <body>
     <!-- Mostrar el logo del canal y la URL del canal -->
     <h1>La Vanguardia - <small>{{rss.feed.title}}</small></h1>
-    <img src="{{rss.feed.image.url}}" alt="Logo de La Vanguardia">
+    <img src="{{rss.feed.image.url}}" alt="{{rss.feed.image.description}}"/>
 
     <!-- Mostrar la información de cada noticia -->
     {% for item in rss.entries %}
         <div class="noticia">
             <h2><a href="{{item.link}}">{{item.title}}</a></h2>
-            <!-- Mostrar la descripción de la noticia -->
-            <p>{{item.description}}</p>
-            <!-- Mostrar la fecha de creación de la noticia -->
-            <p><strong>Fecha de creación:</strong> {{item.published}}</p>
-            <!-- Mostrar la fecha de modificación de la noticia (si está disponible) -->
-            {% if item.updated %}
-                <p><strong>Última actualización:</strong> {{item.updated}}</p>
-            {% endif %}
-            <!-- Mostrar el autor/a de la noticia (si está disponible) -->
-            {% if item.author %}
-                <p><strong>Autor:</strong> {{item.author}}</p>
-            {% endif %}
-            <!-- Mostrar la categoría de la noticia (si está disponible) -->
-            {% if item.category %}
-                <p><strong>Categoría:</strong> {{item.category}}</p>
-            {% endif %}
+            {% for media in item.media_content %}
+                <p><img src="{{media.url}}" alt="{{item.title}}" /></p>
+                <!-- Mostrar la descripción de la noticia -->
+                <p>{{item.description}}</p>
+                <!-- Mostrar la fecha de creación de la noticia -->
+                <p><strong>Fecha de creación:</strong> {{item.published}}</p>
+                <!-- Mostrar la fecha de modificación de la noticia (si está disponible) -->
+                {% if item.updated %}
+                    <p><strong>Última actualización:</strong> {{item.updated}}</p>
+                {% endif %}
+                <!-- Mostrar el autor/a de la noticia (si está disponible) -->
+                {% if item.author %}
+                    <p><strong>Autor:</strong> {{item.author}}</p>
+                {% endif %}
+                <!-- Mostrar la categoría de la noticia (si está disponible) -->
+                {% if item.category %}
+                    <p><strong>Categoría:</strong> {{item.category}}</p>
+                {% endif %}
+            {% endfor %}
         </div>
     {% endfor %}
 </body>

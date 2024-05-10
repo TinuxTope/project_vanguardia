@@ -144,3 +144,16 @@ Utilitzar bucles (for) a Jinja, pots fer-ho amb la següent sintaxi:
 </body>
 </html>
 ```
+
+En la nostra pàgina ens podem conectar de forma local o en remot.
+```python
+def get_rss_lavanguardia(seccio):
+    # MODE REMOT: versió on descarrega l'XML de la web
+    xml = f"https://www.lavanguardia.com/rss/{seccio}.xml"
+    
+    # MODE LOCAL: versió que fa servir l'XML descarregat
+    #xml = f"./rss/lavanguardia/{seccio}.xml"
+    
+    rss = feedparser.parse(xml)
+    return rss
+    ```

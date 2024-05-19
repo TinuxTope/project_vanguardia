@@ -3,72 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
-    <title>Diaris!</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        h1 {
-            text-align: center;
-            color: #007bff;
-            margin-bottom: 30px;
-        }
-        p {
-            text-align: center;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-        }
-        li {
-            display: inline-block;
-            margin-right: 10px;
-        }
-        li:last-child {
-            margin-right: 0;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        img {
-            display: block;
-            margin: 0 auto;
-            margin-top: 50px;
-            max-width: 100%;
-        }
-    </style>
+    <title>Diaris</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Diaris!</h1>
-        <p>Mira les noticies de La Vanguardia:</p>
-        <ul>
-            <li><a href="/lavanguardia/deportes">Deportes</a></li>
-            <li><a href="/lavanguardia/politica">Política</a></li>
-            <li><a href="/lavanguardia/vida">Vida</a></li>
-            <!-- Nuevas secciones de La Vanguardia -->
-            <li><a href="/lavanguardia/economia">Economía</a></li>
-            <li><a href="/lavanguardia/cultura">Cultura</a></li>
-        </ul>
-        <img src="/static/img/diaris.jpg" alt="Diaris" />
+    <!-- Modo oscuro -->
+    <div class="toggle-switch">
+        <input type="checkbox" id="darkModeToggle">
+        <label for="darkModeToggle"></label>
     </div>
+    <div class="container">
+        <h1 class="text-center">Diaris disponibles</h1>
+        <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="/templates/indexVanguardia.html">
+                        <img src="/static/img/vanguardia.jpeg" class="d-block w-100" alt="La Vanguardia">
+                        <div class="carousel-caption d-none d-md-block">
+                            <a href="{{ url_for('lavanguardia') }}" class="btn btn-primary">La Vanguardia</a>
+                        </div>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/templates/elpuntavui.html">
+                        <img src="/static/img/el_punt_avui.jpg" class="d-block w-100" alt="El Punt Avui">
+                        <div class="carousel-caption d-none d-md-block">
+                            <a href="{{ url_for('elpuntavui') }}" class="btn btn-primary">El Punt Avui</a>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{{ url_for('lavanguardia') }}" class="btn btn-primary mx-2">La Vanguardia</a>
+            <a href="{{ url_for('elpuntavui') }}" class="btn btn-primary mx-2">El Punt Avui</a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

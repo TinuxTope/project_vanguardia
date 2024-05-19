@@ -1,8 +1,184 @@
+/* Estils generals */
 body {
-    background-color: beige;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0d1b2a;
+    margin: 0;
+    padding: 0;
+    color: #e0e0e0;
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-img {
-    width: 400px;
+/* Mode fosc */
+body.dark-mode {
+    background-color: #1d1d1d;
+    color: #e0e0e0;
+}
+
+/* Encapçalaments */
+h1, h2 {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: #8a2be2; /* Violeta elèctric */
+    margin-bottom: 30px;
+    text-shadow: 0 0 5px rgba(138, 43, 226, 0.7);
+}
+
+/* Estils de la barra de navegació */
+.navbar {
+    margin-bottom: 20px;
+    background-color: #1b263b;
+    border-bottom: 2px solid #8a2be2;
+}
+
+.navbar-brand {
+    color: #8a2be2 !important;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.navbar-nav .nav-link {
+    color: #8a2be2 !important;
+    transition: color 0.3s;
+    font-size: 1.1em; /* Més gran i més notable */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ff00ff !important; /* Color al passar el cursor */
+}
+
+/* Estils del carrusel */
+.carousel-inner img {
+    max-height: 400px;
+    object-fit: cover;
+    filter: brightness(0.8) contrast(1.2);
+}
+
+.carousel-caption .btn {
+    background-color: #ff0000; /* Fons vermell */
+    border: none;
+    font-family: 'Orbitron', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.carousel-caption .btn:hover {
+    background-color: #ffaa00;
+    color: #000;
+}
+
+/* Botons del carrusel més cridaners */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+    background-color: #8a2be2; /* Fons violeta elèctric */
+    border-radius: 50%;
+    padding: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: #ff00ff; /* Rosa brillant al passar el cursor */
+    transform: scale(1.1);
+}
+
+/* Estils per a La Vanguardia */
+body.lavanguardia {
+    margin: 0;
+    padding: 20px;
+    background-color: #14213d;
+}
+
+.noticia {
+    background-color: #1b263b;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #8a2be2;
+    transition: transform 0.3s;
+}
+
+.noticia:hover {
+    transform: translateY(-5px);
+}
+
+.noticia h2 {
+    color: #8a2be2;
+    text-shadow: 0 0 3px rgba(138, 43, 226, 0.6);
+}
+
+.noticia p {
+    color: #d4d4d4;
+}
+
+.noticia img {
+    max-width: 100%;
     height: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: filter 0.3s;
+}
+
+.noticia img:hover {
+    filter: brightness(1.1);
+}
+
+/* Color de fons per al text sobre les imatges */
+.carousel-caption h5,
+.carousel-caption p {
+    background-color: rgba(138, 43, 226, 0.8); /* Fons violeta elèctric */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Estils addicionals */
+.navbar-toggler {
+    border-color: #8a2be2;
+}
+
+button:focus {
+    outline: none;
+}
+
+/* Interruptor per al mode fosc */
+.toggle-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.toggle-switch input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-switch label {
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    background-color: #8a2be2;
+    display: block;
+    border-radius: 15px;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.toggle-switch label:before {
+    content: "";
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+.toggle-switch input[type="checkbox"]:checked + label {
+    background-color: #ffaa00;
+}
+
+.toggle-switch input[type="checkbox"]:checked + label:before {
+    transform: translateX(25px);
 }

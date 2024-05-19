@@ -8,7 +8,7 @@ En el anunciat ens deriva en un codi de partida [codi](https://github.com/jmirin
 
 El objectiu del projecte es poder entendre i aplicar uns continguts: 
 
-1. ### <span style="color:green">Entorns virtuals a Python (.venv).</span>
+### <span style="color:green">Entorns virtuals a Python (.venv).</span>
 
 Els entorns virtuals en Python (.venv) són eines que permeten crear un espai aïllat per a cada projecte, on les seves biblioteques i dependències es poden gestionar de manera independent del sistema global. Aquesta funcionalitat és útil quan tens diversos projectes que requereixen versions diferents de les mateixes biblioteques, ja que evita conflictes entre elles.
 Podem trobar [més informació](https://docs.python.org/es/3/library/venv.html) sobre creació d'entorns virtuals. 
@@ -80,6 +80,7 @@ En aquest codi, importem la classe Flask del mòdul flask, i després creem una 
 Quan executis aquest script, si obres un navegador web i accedeixes a http://127.0.0.1:5000/, veuràs el text "Hola, món!" que retorna la funció hello(). Això és una resposta a la petició GET que el navegador envia al servidor.
 
 Iniciar l'aplicació: Per executar la teva aplicació, obre una terminal o símbol del sistema, navega fins al directori on tens el fitxer de l'aplicació i executa el fitxer Python. Per exemple, si el teu fitxer s'anomena app.py, pots fer el següent:
+
 ```python
 python app.py
 ```
@@ -147,6 +148,8 @@ Utilitzar bucles (for) a Jinja, pots fer-ho amb la següent sintaxi:
 
 En la nostra pàgina ens podem conectar de forma local o en remot.
 ```python
+#una opcio
+
 def get_rss_lavanguardia(seccio):
     # MODE REMOT: versió on descarrega l'XML de la web
     xml = f"https://www.lavanguardia.com/rss/{seccio}.xml"
@@ -156,4 +159,70 @@ def get_rss_lavanguardia(seccio):
     
     rss = feedparser.parse(xml)
     return rss
-    ```
+    # 2 opcio
+    # Configuració per alternar a mode local o remot
+MODE = 'remote'  # Cambia a 'local' per utilitzar els archius de mode locales
+#MODE = 'local'
+
+def get_rss(seccion, diario):
+    try:
+        if MODE == 'local':
+            xml = os.path.join('rss', diario, f'{seccion}.xml')
+        else:
+            if diario == 'lavanguardia':
+                xml = f"https://www.lavanguardia.com/rss/{seccion}.xml"
+            elif diario == 'elpuntavui':
+                if seccion == 'comunicacio':
+                    xml = "http://www.elpuntavui.cat/comunicacio.feed?type=rss"
+                elif seccion == 'societat':
+                    xml = "http://www.elpuntavui.cat/societat.feed?type=rss"
+                elif seccion == 'deportes':
+                    xml = "http://www.elpuntavui.cat/territori.feed?type=rss"
+                elif seccion == 'territori':
+                    xml = "http://www.elpuntavui.cat/territori.feed?type=rss"
+                elif seccion == 'politica':
+                    xml = "http://www.elpuntavui.cat/territori.feed?type=rss"
+        
+        rss = feedparser.parse(xml)
+        return rss
+    except Exception as e:
+        print(f"Error al obtener el feed RSS de {diario}: {e}")
+        return None
+```
+
+
+### <span style="color:green">Estils CSS personalitzats</span>
+Hem personalitzat els estils CSS del projecte per millorar l'aparença visual:
+
+- Canvi dels colors de les capçaleres i botons a un violeta elèctric.
+- Afegit un fons vermell per als botons de navegació dins el carrusel.
+- Millora de la visibilitat dels botons de control del carrusel amb un fons violeta elèctric i un efecte de creixement en passar el cursor.
+- Estils de text superposats a les imatges amb fons violeta per fer-los més llegibles.
+
+- Botons "Volver al inicio" i "Volver al diario" per a facilitar la navegació entre les seccions i les pàgines principals dels diaris.
+
+S'han resolt diversos errors, com l'error de variable indefinida en Jinja2, assegurant que totes les dades es passen correctament a les plantilles.
+
+### <span style="color:green">Estructura</span>
+
+```arduino
+projecte_UF3/
+│
+├── app.py
+├── requirements.txt
+├── templates/
+│   ├── index.html
+│   ├── indexVanguardia.html
+│   ├── indexpuntdavui.html
+│   ├── lavanguardia.html
+│   └── elpuntavui.html
+└── static/
+    ├── css/
+    │   └── style.css
+    ├── js/
+    │   └── scripts.js
+    └── img/
+        ├── vanguardia.jpeg
+        └── el_punt_avui.jpg
+
+```
